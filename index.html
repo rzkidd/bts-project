@@ -28,11 +28,11 @@
                     <i class="bi bi-speedometer2"></i> Dashboard
                 </a>
                 </li>
-                <li class="px-3 py-2">
+                <li>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                         <h2 class="accordion-header bg-dark fs-6 fw-normal" id="flush-headingOne">
-                            <a href="#"class="dropdown-toggle collapsed text-white text-decoration-none" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <a href="#"class="dropdown-toggle collapsed text-white text-decoration-none nav-link" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                 <i class="bi bi-file-bar-graph"></i> Master Data
                             </a>
                         </h2>
@@ -72,15 +72,99 @@
         </div>
     </nav>
 
-    <main>
-        <div aria-label="breadcrumb" class="ps-3 py-2">
+    <main class="flex-fill ms-4">
+        <div aria-label="breadcrumb" class="container py-2">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#" class=" text-black">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             </ol>
         </div>
 
-        <!-- Tambahin disini.... -->
+        <!-- Tambahin disini.... --> 
+        <div class="container bg-light pb-5">
+            <h3 class="">Welcome, Admin.</h3>
+    
+            <div class="row mt-3 ms-0">
+                <div class="col-md-3 bg-success d-flex flex-column rounded me-5 text-white">
+                    <h2 class="">3</h2>
+                    <p class="pb-0 mb-0">BTS</p>
+                    <a href="src/view/data/dataBTS.html" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
+                </div>
+                <div class="col-md-3 bg-primary d-flex flex-column rounded me-5 text-white">
+                    <h2 class="">3</h2>
+                    <p class="pb-0 mb-0">Operator</p>
+                    <a href="src/view/data/dataOperator.html" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
+                </div>
+                <div class="col-md-3 bg-warning d-flex flex-column rounded me-5 text-white">
+                    <h2 class="">5</h2>
+                    <p class="pb-0 mb-0">Monitoring</p>
+                    <a href="src/view/data/dataBTS.html" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
+                </div>
+                
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-4 me-3">
+                    <div class="card">
+                        <div class="card-header bg-info fw-bold">
+                          Recent Activity
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-plus-circle"></i> <span class="fw-bold">Admin</span> add new BTS</p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-pencil-square"></i> <span class="fw-bold">Admin</span> edit BTS-959</p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-pencil-square"></i> <span class="fw-bold">Admin</span> edit BTS-452</p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-plus-circle"></i> <span class="fw-bold">Admin</span> add new operator</p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-trash"></i> <span class="fw-bold">Admin</span> delete BTS-223</p>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-info fw-bold">
+                          Last Login
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-person-circle"></i> <span class="fw-bold">Admin</span></p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-person-circle"></i> <span class="fw-bold">Gina Vanesa Uyainah S.Psi</span></p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-person-circle"></i> <span class="fw-bold">Admin</span></p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-person-circle"></i> <span class="fw-bold">Kania Andriani</span></p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-black-50">2022-04-04 16:23:24</p>
+                              <p class="mb-0"><i class="bi bi-person-circle"></i> <span class="fw-bold">Jaya Situmorang M.Kom.</span></p>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </main>
 
