@@ -23,3 +23,7 @@ nav {
 }
 
 .dropdown-toggle { outline: 0; }
+
+#profileHover {
+    z-index: 1;
+}
