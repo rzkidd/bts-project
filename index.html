@@ -17,7 +17,7 @@
 </head>
 <body> 
     <nav>
-        <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px; ">
+        <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 18vw; ">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span class="fs-4">Aplikasi</span>
             </a>
@@ -28,10 +28,23 @@
                     <i class="bi bi-speedometer2"></i> Dashboard
                 </a>
                 </li>
-                <li>
-                <a href="#" class="nav-link text-white">
-                    <i class="bi bi-file-bar-graph"></i> Data BTS
-                </a>
+                <li class="px-3 py-2">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                        <h2 class="accordion-header bg-dark fs-6 fw-normal" id="flush-headingOne">
+                            <a href="#"class="dropdown-toggle collapsed text-white text-decoration-none" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <i class="bi bi-file-bar-graph"></i> Master Data
+                            </a>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body bg-dark d-flex flex-column">
+                                <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="src/view/data/dataBTS.html">Data BTS</a>
+                                <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="src/view/data/dataOperator.html">Data Operator</a>
+                                <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="src/view/data/dataMonitoring.html">Data Monitoring</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </li>
                 <li>
                 <a href="#" class="nav-link text-white">
@@ -60,13 +73,11 @@
     </nav>
 
     <main>
-        <div class="d-flex border-bottom header align-items-center ps-3">
-            <a href="#" class="text-decoration-none text-black">
-                Home /
-            </a>
-            <div class="ps-2 active-link">
-                Dashboard
-            </div>
+        <div aria-label="breadcrumb" class="ps-3 py-2">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#" class=" text-black">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
         </div>
 
         <!-- Tambahin disini.... -->
