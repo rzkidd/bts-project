@@ -1,3 +1,24 @@
+<?php
+    session_start();
+    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+        if($_SESSION['email'] != "admin@admin.com"){
+            // echo '
+            //     <script>
+            //         alert("Akses dilarang!");
+            //         document.location.href = /bts-project;
+            //     </script>
+            // ';
+            header("Location: /bts-project");
+            exit();
+        }
+
+        include '../../functions/query.php';
+        $countBTS = select("select count(id) from bts");
+        $countOperator = select("select count(id) from users");
+        $countMonitoring = select("select count(id) from monitorings");
+        // var_dump($countBTS);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,61 +37,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body> 
-    <nav>
-        <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 18vw; ">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-4">Aplikasi</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li>
-                <a href="#" class="nav-link text-white active">
-                    <i class="bi bi-speedometer2"></i> Dashboard
-                </a>
-                </li>
-                <li>
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                        <h2 class="accordion-header bg-dark fs-6 fw-normal" id="flush-headingOne">
-                            <a href="#"class="dropdown-toggle collapsed text-white text-decoration-none nav-link" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <i class="bi bi-file-bar-graph"></i> Master Data
-                            </a>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body bg-dark d-flex flex-column">
-                                <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="../data/dataBTS.html">Data BTS</a>
-                                <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="../data/dataOperator.html">Data Operator</a>
-                                <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="../data/dataMonitoring.html">Data Monitoring</a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                <a href="../maps/MapsBTS.html" class="nav-link text-white">
-                    <i class="bi bi-pin-map"></i> Maps
-                </a>
-                </li>
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                      </svg>
-                    <strong class="ps-2">Admin</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(0px, -34px, 0px);" data-popper-placement="top-start">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="../password/gantipaswordBTS.html">Change Password</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="../../../index.html">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include '../../partials/sidebar.php'; ?>
 
     <main class="flex-fill ms-4">
         <div aria-label="breadcrumb" class="container py-2">
@@ -86,19 +53,19 @@
     
             <div class="row mt-3 ms-0">
                 <div class="col-md-3 bg-success d-flex flex-column rounded me-5 text-white">
-                    <h2 class="">3</h2>
+                    <h2 class=""><?= $countBTS[0]['count(id)'] ?></h2>
                     <p class="pb-0 mb-0">BTS</p>
-                    <a href="../data/dataBTS.html" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
+                    <a href="../data/dataBTS.php" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
                 </div>
                 <div class="col-md-3 bg-primary d-flex flex-column rounded me-5 text-white">
-                    <h2 class="">3</h2>
+                    <h2 class=""><?= $countOperator[0]['count(id)'] ?></h2>
                     <p class="pb-0 mb-0">Operator</p>
-                    <a href="../data/dataOperator.html" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
+                    <a href="../data/dataOperator.php" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
                 </div>
                 <div class="col-md-3 bg-warning d-flex flex-column rounded me-5 text-white">
-                    <h2 class="">5</h2>
+                    <h2 class=""><?= $countMonitoring[0]['count(id)'] ?></h2>
                     <p class="pb-0 mb-0">Monitoring</p>
-                    <a href="../data/dataBTS.html" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
+                    <a href="../data/dataMonitoring.php" class="btn  my-2 text-decoration-none text-white d-flex justify-content-between border-top border-white" >Show more <i class="bi bi-chevron-right "></i></a>
                 </div>
                 
             </div>
@@ -196,3 +163,10 @@
     </script>
 </body>
 </html>
+
+<?php 
+    } else {
+        header('Location: ../login/index.php');
+        exit();
+    }
+?>

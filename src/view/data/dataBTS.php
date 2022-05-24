@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+        if($_SESSION['email'] != "admin@admin.com"){
+            // echo '
+            //     <script>
+            //         alert("Akses dilarang!");
+            //         document.location.href = /bts-project;
+            //     </script>
+            // ';
+            header("Location: /bts-project");
+            exit();
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,75 +32,21 @@
 
 </head>
 <body> 
-    <nav>
-        <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px; ">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-4">Aplikasi</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li>
-                <a href="../home/index.html" class="nav-link text-white ">
-                    <i class="bi bi-speedometer2"></i> Dashboard
-                </a>
-                </li>
-                <li>
-                  <div class="accordion accordion-flush" id="accordionFlushExample">
-                      <div class="accordion-item">
-                      <h2 class="accordion-header bg-dark fs-6 fw-normal" id="flush-headingOne">
-                          <a href="#" class="dropdown-toggle collapsed text-white text-decoration-none nav-link active" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                              <i class="bi bi-file-bar-graph"></i> Master Data
-                          </a>
-                      </h2>
-                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                          <div class="accordion-body bg-dark d-flex flex-column">
-                              <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="dataBTS.html">Data BTS</a>
-                              <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="dataOperator.html">Data Operator</a>
-                              <a class="text-white text-decoration-none border-bottom pb-2 mb-2" href="dataMonitoring.html">Data Monitoring</a>
-                          </div>
-                      </div>
-                      </div>
-                  </div>
-                </li>
-                <li>
-                <a href="../maps/MapsBTS.html" class="nav-link text-white">
-                    <i class="bi bi-pin-map"></i> Maps
-                </a>
-                </li>
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                      </svg>
-                    <strong class="ps-2">Admin</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(0px, -34px, 0px);" data-popper-placement="top-start">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="../password/gantipaswordBTS.html">Change Password</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="../../../index.html">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include '../../partials/sidebar.php'; ?>
 
     <main class="flex-fill ms-4">
         <div aria-label="breadcrumb" class="container py-2">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="../home/index.html" class=" text-black">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data Operator</li>
-          </ol>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../home/index.html" class=" text-black">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data BTS</li>
+            </ol>
         </div>
 
         <!-- Tambahin disini.... -->
-        <div class = "ps-3 bg-light" style="width: 1080px; height: 617px";>
+        <div class = "ps-3 bg-light " style="width: 1080px; height: 617px";>
             <div class="d-flex align-items-center">
                 <h2>
-                    Data Operator
+                    Data BTS
                 </h2>
             </div>
             <div class="bg-white" style="margin-right: 15px; margin-left: 15px; height: 500px";>
@@ -116,16 +77,20 @@
                       <thead>
                         <tr>
                           <th scope="col">No</th>
-                          <th scope="col">Nama Operator</th>
-                          <th scope="col">Email</th>
+                          <th scope="col">Nama BTS</th>
+                          <th scope="col">Lokasi</th>
+                          <th scope="col">Latitude</th>
+                          <th scope="col">Longitude</th>
                           <th scope="col" colspan="3">Opsi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <th scope="row">1</th>
-                          <td>Gina Vanesa Uyainah S.Psi</td>
-                          <td>panji.prasetyo@example.com</td>
+                          <td>BTS-959</td>
+                          <td>Gg. Nakula No. 127, Pematangsiantar 75958, Sulbar</td>
+                          <td>50.927549</td>
+                          <td>-133.87823</td>
                           <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myEdit1"><i class="bi-pencil-square"></i></button></td>
                           <td onclick="javascript: confirm('Anda yakin data ini dihapus?')"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#myTrash1"><i class="bi-trash"></i></button>
                           </td>
@@ -133,8 +98,10 @@
                         </tr>
                         <tr>
                           <th scope="row">2</th>
-                          <td>Jaya Situmorang M.Kom.</td>
-                          <td>nsetiawan@example.net</td>
+                          <td>BTS-431</td>
+                          <td>Ki. Ketandan No. 9, Surabaya 39314, Kaltim</td>
+                          <td>-2.544021</td>
+                          <td>162.56323</td>
                           <td><div class="btn btn-primary btn-sm"><i class="bi-pencil-square"></i></div></td>
                           <td><div class="btn btn-danger btn-sm"><i class="bi-trash"></i></div>
                           </td>
@@ -142,8 +109,10 @@
                         </tr>
                         <tr>
                           <th scope="row">3</th>
-                          <td>Kania Andriani</td>
-                          <td>farhunnisa30@example.net</td>
+                          <td>BTS-452</td>
+                          <td>Jr. Thamrin No. 661, Bengkulu 72071, Jatim</td>
+                          <td>-69.253395</td>
+                          <td>103.47447</td>
                           <td><div class="btn btn-primary btn-sm"><i class="bi-pencil-square"></i></div></td>
                           <td><div class="btn btn-danger btn-sm"><i class="bi-trash"></i></div>
                           </td>
@@ -180,13 +149,55 @@
                         <label>Nama</label>
                         <input type="text" name="nama" class="form-control">
                     </div>
+                     <div class="form-group">
+                        <label for="jenis_bts" class="form-label">Jenis BTS</label>
+                        <select class="form-select" id="jenis_bts" name="jenis_bts">
+                            <option>Triangle</option>
+                            <option>Mono</option>
+                            <option>4 Kaki</option>
+                        </select>
+                    </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="email" class="form-control">
+                        <label>Pemilik</label>
+                        <input type="text" name="pemilik" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Lokasi</label>
+                        <input type="text" name="lokasi" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Latitude</label>
+                        <input type="text" name="latitude" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Longitude</label>
+                        <input type="text" name="longitude" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tinggi Tower</label>
+                        <input type="text" name="tinggi_tower" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Panjang Tanah</label>
+                        <input type="text" name="panjang_tanah" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="ada_genset" class="form-label">Ada Genset</label>
+                        <select class="form-select" id="ada_genset" name="ada_genset">
+                            <option>Ada</option>
+                            <option>Tidak Ada</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                         <label for="ada_tembok_batas" class="form-label">Ada Tembok Batas</label>
+                        <select class="form-select" id="ada_tembok_batas" name="ada_tembok_batas">
+                            <option>Ada</option>
+                            <option>Tidak Ada</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>File Foto</label>
-                        <input type="file" name="foto_op" class="form-control">
+                        <input type="file" name="foto" class="form-control">
                     </div>
                 </form>
               </div>
@@ -219,16 +230,58 @@
                 <form method="post" action=" ">
                     <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" name="nama" class="form-control" value="Gina Vanesa Uyainah S.Psi">
+                        <input type="text" name="nama" class="form-control" value="BTS-959">
+                    </div>
+                     <div class="form-group">
+                        <label for="jenis_bts" class="form-label">Jenis BTS</label>
+                        <select class="form-select" id="jenis_bts" name="jenis_bts" value="4 Kaki">
+                            <option>Triangle</option>
+                            <option>Mono</option>
+                            <option>4 Kaki</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="email" class="form-control" value="panji.prasetyo@example.com">
+                        <label>Pemilik</label>
+                        <input type="text" name="pemilik" class="form-control" value="Lintang Susanti">
+                    </div>
+                    <div class="form-group">
+                        <label>Lokasi</label>
+                        <input type="text" name="lokasi" class="form-control" value="Solok">
+                    </div>
+                    <div class="form-group">
+                        <label>Latitude</label>
+                        <input type="text" name="latitude" class="form-control" value="50.927549">
+                    </div>
+                    <div class="form-group">
+                        <label>Longitude</label>
+                        <input type="text" name="longitude" class="form-control" value="-133.878236">
+                    </div>
+                    <div class="form-group">
+                        <label>Tinggi Tower</label>
+                        <input type="text" name="tinggi_tower" class="form-control" value="19">
+                    </div>
+                    <div class="form-group">
+                        <label>Panjang Tanah</label>
+                        <input type="text" name="panjang_tanah" class="form-control" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label for="ada_genset" class="form-label">Ada Genset</label>
+                        <select class="form-select" id="ada_genset" name="ada_genset" value="Ada">
+                            <option>Ada</option>
+                            <option>Tidak Ada</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                         <label for="ada_tembok_batas" class="form-label">Ada Tembok Batas</label>
+                        <select class="form-select" id="ada_tembok_batas" name="ada_tembok_batas" value="Tidak Ada">
+                            <option>Ada</option>
+                            <option>Tidak Ada</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>File Foto</label>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc3j_jlYp_6GSfnlumRrqQEfP2vdo_BF8h8A&usqp=CAU" style="width: 200px; height: 200px" class="mt-10">
-                        <input type="file" name="foto_op" class="form-control">
+                        <img src="https://1.bp.blogspot.com/-aRO27s7V6W0/YP9VzbTDr_I/AAAAAAAABd0/Fsu2PoKVUEwD700N-TpFUSbWTkgTX3kAQCLcBGAsYHQ/s586/BTS%2BPertama%2BTelkomsel.JPG" style="width: 200px; height: 200px" class="mt-10">
+                        <input type="file" name="foto" class="form-control">
                     </div>
 
                 </form>
@@ -259,14 +312,50 @@
               <!-- Modal body -->
               <div class="modal-body">
                 <table class="table">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc3j_jlYp_6GSfnlumRrqQEfP2vdo_BF8h8A&usqp=CAU" style="width: 300px; height: 300px" class="mx-auto d-block">
+                    <img src="https://1.bp.blogspot.com/-aRO27s7V6W0/YP9VzbTDr_I/AAAAAAAABd0/Fsu2PoKVUEwD700N-TpFUSbWTkgTX3kAQCLcBGAsYHQ/s586/BTS%2BPertama%2BTelkomsel.JPG" style="width: 300px; height: 300px" class="mx-auto d-block">>
                     <tr>
                         <th>Nama BTS</th>
-                        <td>Gina Vanesa Uyainah S.Psi</td>
+                        <td>BTS-959</td>
                     </tr>
                     <tr>
-                        <th>Email</th>
-                        <td>panji.prasetyo@example.com</td>
+                        <th>Jenis BTS</th>
+                        <td>4 Kaki</td>
+                    </tr>
+                    <tr>
+                        <th>Pemilik</th>
+                        <td>Lintang Susanti</td> 
+                    </tr>
+                    <tr>
+                        <th>Lokasi</th>
+                        <td>Solok</td>
+                    </tr>
+                    <tr>
+                        <th>Latitude</th>
+                        <td>50.927549</td>
+                    </tr>
+                    <tr>
+                        <th>Longitude</th>
+                        <td>-133.878236</td>
+                    </tr>
+                    <tr>
+                        <th>Tinggi Tower</th>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <th>Panjang Tanah</th>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <th>Lebar Tanah</th>
+                        <td>27</td>
+                    </tr>
+                    <tr>
+                        <th>Ada Genset</th>
+                        <td>Ada</td>
+                    </tr>
+                    <tr>
+                        <th>Ada Tembok Batas</th>
+                        <td>Tidak Ada</td>
                     </tr>
                 </table>
               </div>
@@ -289,3 +378,10 @@
 
 </body>
 </html>
+
+<?php 
+    } else {
+        header('Location: ../login/index.php');
+        exit();
+    }
+?>
