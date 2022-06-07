@@ -44,7 +44,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 <body>
   <?php include '../../partials/sidebar.php'; ?>
 
-  <main class="flex-fill ms-4">
+  <main class="flex-fill ms-4 ">
     <div aria-label="breadcrumb" class="container py-2">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../home/index.php" class=" text-black">Home</a></li>
@@ -66,6 +66,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
           <form action="#" method="get">
             <label for="bts" class="form-label">Select BTS</label>
             <select name="bts" id="bts" class="form-select" onchange="submit();">
+              <?php if(empty($_GET['bts'])) : ?>
+                <option value=""></option>
+              <?php endif; ?>
               <?php foreach ($dataBts as $row) : ?>
                 <?php if ($_GET['bts'] == $row['id']) : ?>
                   <option value="<?= $row['id'] ?>" selected><?= $row['nama'] ?></option>
@@ -78,7 +81,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         </div>
 
         <div>
-          <button type="button" class="btn btn-danger" style="margin-top: 15px; margin-right: 30px; margin-left: 15px;"><i class="bi-file-pdf"></i> PDF </button>
+          <button type="button" class="btn btn-danger" style="margin-top: 15px; margin-right: 30px; margin-left: 15px;" ><i class="bi-file-pdf"></i> PDF </button>
           </button>
           <button type="button" class="btn btn-success" style="margin-top: 15px; margin-right: 30px; margin-left: 15px;"><i class="bi-file-excel"></i> Excel </button>
           <div>
@@ -99,6 +102,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 <tr>
                   <th scope="col">No</th>
                   <th scope="col">Tahun</th>
+                  <th scope="col">BTS</th>
                   <th scope="col">Tanggal Kunjungan</th>
                   <th scope="col">Kondisi</th>
                   <th scope="col">Surveyor</th>
@@ -111,6 +115,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                   <tr>
                     <th scope="row"><?= $count ?></th>
                     <td id="tahun"><?= $row['tahun'] ?></td>
+                    <td id="bts_tabel"><?php $bts_tabel = select("SELECT nama FROM bts WHERE id = " . $row['bts_id']); echo $bts_tabel[0]['nama']; ?></td>
                     <td id="tgl_kunjungan"><?= $row['tgl_kunjungan'] ?></td>
                     <td id="kondisi_id"><?php $kondisi = select("select nama from kondisi_bts where id = " . $row['kondisi_bts_id']);
                         echo $kondisi[0]['nama']; ?></td>
@@ -127,6 +132,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                   <tr>
                     <th scope="row"><?= $count ?></th>
                     <td id="tahun"><?= $row['tahun'] ?></td>
+                    <td id="bts_tabel"><?php $bts_tabel = select("SELECT nama FROM bts WHERE id = " . $row['bts_id']); echo $bts_tabel[0]['nama']; ?></td>
                     <td id="tgl_kunjungan"><?= $row['tgl_kunjungan'] ?></td>
                     <td id="kondisi_id"><?php $kondisi = select("select nama from kondisi_bts where id = " . $row['kondisi_bts_id']);
                         echo $kondisi[0]['nama']; ?></td>
@@ -143,7 +149,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
               </tbody>
             </table>
-            <ul class="pagination mr-30 ml-15 ps-3">
+            
+            <ul class="pagination mr-30 ml-15 ps-3 ">
               <li class="page-item"><a class="page-link" href="#">Previous</a></li>
               <li class="page-item active"><a class="page-link" href="#">1</a></li>
               <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -206,8 +213,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                   
                   <!-- Modal footer -->
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary">Reset</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                   </div>
                 </form>
@@ -243,6 +249,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
       $(e.currentTarget).find('select[name="kondisi_bts"]').val(kondisi_id);
       $(e.currentTarget).find('select[name="surveyor"]').val(surveyor_id);
     });
+
+    if(/index/.test(window.location.href)) {
+        $('[href="../home/index.php"]').addClass("active");
+    } else if (/dataBTS/.test(window.location.href) || /dataMonitoring/.test(window.location.href) || /dataOperator/.test(window.location.href)){
+        $('#masterData').addClass("active");
+    } else if (/MapsBTS/.test(window.location.href)){
+        $('[href="/bts-project/src/view/maps/MapsBTS.php"]').addClass("active");
+    } else {
+        alert(window.location.href);
+    }
+
   </script>
 
 </body>

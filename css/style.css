@@ -12,6 +12,12 @@ nav {
     max-height: 100vh;
     overflow-x: auto;
     overflow-y: hidden;
+    position: fixed;
+}
+
+main {
+    position: absolute;
+    left: 18vw;
 }
 
 .active-link {

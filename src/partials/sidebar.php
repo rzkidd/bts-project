@@ -1,7 +1,7 @@
 <?php
 
 echo '
-    <nav>
+    <nav class="">
         <div class="d-flex flex-column p-3 text-white bg-dark" style="width: 18vw; ">
             <a href="/bts-project" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span class="fs-4">Aplikasi</span>
@@ -17,7 +17,7 @@ echo '
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                         <h2 class="accordion-header bg-dark fs-6 fw-normal" id="flush-headingOne">
-                            <a href="#" class="dropdown-toggle collapsed text-white text-decoration-none nav-link active" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <a href="#" class="dropdown-toggle collapsed text-white text-decoration-none nav-link " data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="masterData">
                                 <i class="bi bi-file-bar-graph"></i> Master Data
                             </a> 
                         </h2>
@@ -61,3 +61,4 @@ echo
 ';
 
 ?>
+
